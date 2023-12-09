@@ -6,7 +6,7 @@ const RegisterForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('')
 
   return (
-    <div className="register-form-container">
+    <div className="login-register-form-container">
       <form>
         <div class="mb-3">
           <label for="loginInput" class="form-label">Podaj login</label>
