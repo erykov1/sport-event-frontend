@@ -1,0 +1,25 @@
+.login-register-page-container {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('https://images.unsplash.com/photo-1461897104016-0b3b00cc81ee?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-register-form-container {
+  background-color: rgba(255, 255, 255, 0.8); /* Kolor tła formularza z przezroczystością */
+  padding: 20px; /* Dodatkowy padding dla estetyki */
+  width: 60%;
+  max-width: 500px; /* Maksymalna szerokość formularza */
+  border-radius: 10px; /* Zaokrąglenie rogów formularza */
+  border: 2px solid black; /* Czarna obwódka formularza */
+}
+
+/* Dodatkowy styl dla formularza */
+form {
+  width: 100%; /* Formularz zajmie 100% szerokości kontenera */
+}

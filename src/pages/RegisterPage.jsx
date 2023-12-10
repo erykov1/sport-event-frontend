@@ -5,7 +5,7 @@ import RegisterForm from "../components/RegisterForm";
 const RegisterPage = () => {
 
   return (
-    <div>
+    <div className="login-register-page-container">
       <RegisterForm/>
     </div>
   )
