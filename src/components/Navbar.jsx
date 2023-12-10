@@ -15,6 +15,9 @@ const Navbar = () => {
         <li>
           <Link to="/signup">Załóż konto</Link>
         </li>
+        <li>
+          <Link to="/event">Dodaj wydarzenie</Link>
+        </li>
       </ul>
     </nav>
   );
