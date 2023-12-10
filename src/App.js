@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import SportEventPage from './pages/SportEventPage';
+import SportEventAddressPage from './pages/SportEventAddressPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/signin' element={<LoginPage />} />
           <Route path='/signup' element={<RegisterPage />} />
+          <Route path='/eventAddress' element={<SportEventAddressPage/>} />
           <Route path='/event' element={<SportEventPage/>} />
         </Routes>
       </BrowserRouter>

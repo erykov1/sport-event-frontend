@@ -1,12 +1,12 @@
 import React from "react";
-import SportEventAddress from "../components/SportEventAddress";
+import SportEvent from "../components/SportEvent";
 import '../styles/SportEvent.css';
 
 const SportEventPage = () => {
 
   return (
     <div className="sport-event-page-container">
-      <SportEventAddress />
+      <SportEvent />
     </div>
   )
 }
