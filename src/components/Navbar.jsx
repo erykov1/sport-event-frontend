@@ -18,6 +18,9 @@ const Navbar = () => {
         <li>
           <Link to="/eventAddress">Dodaj wydarzenie</Link>
         </li>
+        <li>
+          <Link to="/eventPick">Typy wydarzeń</Link>
+        </li>
       </ul>
     </nav>
   );

@@ -1,0 +1,45 @@
+.sport-event-type-page-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.sport-event-type-page-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sport-event-type-page-container .sport-event-types-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.sport-event-type-page-container .sport-event-type-picker {
+  flex: 0 0 calc(33.33% - 20px);
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sport-event-type-page-container .sport-event-type-picker:hover {
+  transform: scale(1.05);
+}
+
+.sport-event-type-page-container .sport-event-type-picker img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.sport-event-type-page-container .sport-event-type-picker p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.sport-event-type-page-container p {
+  margin-top: 20px;
+  font-weight: bold;
+}
