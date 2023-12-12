@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import SportEventPage from './pages/SportEventPage';
 import SportEventAddressPage from './pages/SportEventAddressPage';
+import SportEventTypePage from './pages/SportEventTypePage';
+import SportEventPickedTypePage from './pages/SportEventPickedTypePage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path='/signup' element={<RegisterPage />} />
           <Route path='/eventAddress' element={<SportEventAddressPage/>} />
           <Route path='/event' element={<SportEventPage/>} />
+          <Route path='/eventPick' element={<SportEventTypePage/>} />
+          <Route path='/eventPick/:id' element={<SportEventPickedTypePage />} />
         </Routes>
       </BrowserRouter>
     </div>
