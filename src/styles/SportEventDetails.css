@@ -1,0 +1,43 @@
+.sport-event-details-page-container {
+  background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=2090&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sport-event-details-page-container h1 {
+  color: white;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.sport-event-details-page-container .content-section {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.sport-event-address-details-container,
+.sport-event-details-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 40%;
+  margin: 20px;
+}
+
+.sport-event-address-details-container h2,
+.sport-event-details-container h2 {
+  font-size: 28px;
+}
+
+.sport-event-address-details-container p,
+.sport-event-details-container p {
+  font-size: 18px;
+}
