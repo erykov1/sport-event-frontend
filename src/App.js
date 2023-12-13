@@ -8,6 +8,7 @@ import SportEventPage from './pages/SportEventPage';
 import SportEventAddressPage from './pages/SportEventAddressPage';
 import SportEventTypePage from './pages/SportEventTypePage';
 import SportEventPickedTypePage from './pages/SportEventPickedTypePage';
+import ReportPage from './pages/ReportPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/event' element={<SportEventPage/>} />
           <Route path='/eventPick' element={<SportEventTypePage/>} />
           <Route path='/eventPick/:id' element={<SportEventPickedTypePage />} />
+          <Route path='/reports' element={<ReportPage />}/>
         </Routes>
       </BrowserRouter>
     </div>
