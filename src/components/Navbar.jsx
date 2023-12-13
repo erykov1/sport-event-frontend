@@ -21,6 +21,9 @@ const Navbar = () => {
         <li>
           <Link to="/eventPick">Typy wydarzeń</Link>
         </li>
+        <li>
+          <Link to="/reports">Zgłoszenia</Link>
+        </li>
       </ul>
     </nav>
   );
