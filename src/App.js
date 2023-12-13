@@ -23,7 +23,7 @@ function App() {
           <Route path='/eventAddress' element={<SportEventAddressPage/>} />
           <Route path='/event' element={<SportEventPage/>} />
           <Route path='/eventPick' element={<SportEventTypePage/>} />
-          <Route path='/eventPick/:id' element={<SportEventPickedTypePage />} />
+          <Route path='/eventPicked' element={<SportEventPickedTypePage />} />
           <Route path='/reports' element={<ReportPage />}/>
           <Route path='/event/details/:id' element={<SportEventDetailsPage/>}/>
         </Routes>

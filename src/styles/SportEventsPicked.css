@@ -1,0 +1,32 @@
+.sport-event-picked-type-page-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.sport-event-picked-type-page-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sport-event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.sport-event-from-type-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sport-event-from-type-container:hover {
+  transform: scale(1.05);
+}
+
+.sport-event-from-type-container p {
+  font-weight: bold;
+}
