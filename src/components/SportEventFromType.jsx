@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/SportEventsPicked.css";
 
-const SportEventFromType = ({ sportEventId, eventName, eventTime, onEventClick }) => {
+const SportEventFromType = ({ sportEventId, eventName, eventTime, onEventClick, sportEventAddress }) => {
   const handleEventClick = () => {
     onEventClick(sportEventId);
   };
