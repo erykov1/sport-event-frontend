@@ -1,12 +1,38 @@
 import React, { useState } from "react";
 import "../styles/SportEvent.css";
 import "../styles/SportEventAddress.css";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const SportEventAddress = () => {
   const [postalCode, setPostalCode] = useState('');
   const [city, setCity] = useState('');
   const [street, setStreet] = useState('');
   const [streetNumber, setStreetNumber] = useState('');
+  const [sportEventAddress, setSportEventAddress] = useState(0)
+  const navigate = useNavigate()
+
+  const handleCreateSportEventAddress = (event) => {
+    event.preventDefault()
+    axios({
+      method: 'post',
+      url: 'http://localhost:8080/api/sportEvent/address/create',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        postalCode: postalCode,
+        city: city,
+        street: street,
+        streetNumber: streetNumber
+      }
+    }).then((response) => {
+      setSportEventAddress(response.data.sportEventId)
+      navigate('/event', { state: { sportEventAddress } })
+    }).catch((error) =>{
+      console.log(error)
+    })
+  }
 
   return (
     <div className="sport-event-address-container">
@@ -27,7 +53,7 @@ const SportEventAddress = () => {
           <label htmlFor="streetNumberInput" className="form-label">Numer ulicy</label>
           <input type="text" className="form-control" id="streetNumberInput" onChange={(e) => setStreetNumber(e.target.value)}/>
         </div>
-        <button type="submit" className="btn btn-primary">Potwierdź adres</button>
+        <button type="submit" className="btn btn-primary" onClick={handleCreateSportEventAddress}>Potwierdź adres</button>
       </form>
     </div>
   );

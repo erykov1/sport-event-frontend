@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "../styles/SportEvent.css"
+import axios from "axios";
+import { useNavigate, useParams } from "react-router";
+import { format } from 'date-fns';
+import { useLocation } from "react-router";
 
 const SportEvent = () => {
   const [eventName, setEventName] = useState('')
@@ -8,6 +12,45 @@ const SportEvent = () => {
   const [description, setDescription] = useState('')
   const [maxParticipants, setMaxParticipants] = useState(0)
   const [eventType, setEventType] = useState('')
+  const navigate = useNavigate()
+  const location = useLocation();
+  const sportEventAddress = location.state?.sportEventAddress;
+
+  const handleEventTimeChange = (e) => {
+    const enteredDate = e.target.value;
+    const formattedDate = format(new Date(enteredDate), 'yyyy-MM-dd HH:mm');
+    setEventTime(formattedDate);
+  };
+
+  const handleRegistrationDeadlineChange = (e) => {
+    const enteredDate = e.target.value;
+    const formattedDate = format(new Date(enteredDate), 'yyyy-MM-dd HH:mm');
+    setRegistrationDeadline(formattedDate);
+  }
+
+  const handleCreateSportEvent = (event) => {
+    event.preventDefault()
+    axios({
+      method: 'post',
+      url: 'http://localhost:8080/api/sportEvent/create',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        eventName: eventName,
+        eventTime: eventTime,
+        registrationDeadline: registrationDeadline,
+        description: description,
+        maxParticipants: maxParticipants,
+        eventType: eventType,
+        sportEventAddress: sportEventAddress
+      }
+    }).then((response) => {
+      navigate('/eventPick')
+    }).catch((error) =>{
+      console.log(error)
+    })
+  }
 
   const handleTextareaChange = (e) => {
     const textarea = e.target;
@@ -31,16 +74,16 @@ const SportEvent = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="eventTimeInput" className="form-label">Rozpoczęcie wydarzenia</label>
-          <input type="text" className="form-control" id="eventTimeInput" onChange={(e) => setEventTime(e.target.value)}/>
+          <input type="text" className="form-control" id="eventTimeInput" onChange={handleEventTimeChange}/>
         </div>
         <div className="mb-3">
           <label htmlFor="registrationDeadlineInput" className="form-label">Godzina, do której można zgłaszać udział</label>
-          <input type="text" className="form-control" id="registrationDeadlineInput" onChange={(e) => setRegistrationDeadline(e.target.value)}/>
+          <input type="text" className="form-control" id="registrationDeadlineInput" onChange={handleRegistrationDeadlineChange}/>
         </div>
         <div class="form-floating">
           <textarea class="form-control" id="floatingTextarea" style={{
               maxHeight: '200px',
-              overflowY: 'auto', 
+              overflowY: 'auto',
             }}
             onChange={handleTextareaChange}></textarea>
           <label for="floatingTextarea">Opis wydarzenia</label>
@@ -51,14 +94,14 @@ const SportEvent = () => {
         </div>
         <select class="form-select" aria-label="Default select example" onChange={(e) => setEventType(e.target.value)}>
           <option selected>Typ wydarzenia</option>
-          <option value="1">Siatkówka</option>
-          <option value="2">Piłka ręczna</option>
-          <option value="3">Piłka nożna</option>
-          <option value="4">Tenis ziemny</option>
-          <option value="5">Maraton</option>
-          <option value="6">Biegi</option>
+          <option value="VOLLEYBALL">Siatkówka</option>
+          <option value="HANDBALL">Piłka ręczna</option>
+          <option value="FOOTBALL">Piłka nożna</option>
+          <option value="TENNIS">Tenis ziemny</option>
+          <option value="MARATHON">Maraton</option>
+          <option value="RUNNING">Biegi</option>
         </select>
-        <button type="submit" className="btn btn-primary" id="btn-sport-event">Utwórz wydarzenie</button>
+        <button type="submit" className="btn btn-primary" id="btn-sport-event" onClick={handleCreateSportEvent}>Utwórz wydarzenie</button>
       </form>
     </div>
   )
