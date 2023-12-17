@@ -7,9 +7,19 @@ const SportEventTypePage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const navigate = useNavigate()
 
-  const handleEventPick = (eventId) => {
-    setSelectedEvent(eventId);
-    navigate(`/eventPick/${eventId}`);
+  const handleEventPick = (eventTypeName) => {
+    const englishEventName = eventNamesMap[eventTypeName];
+    setSelectedEvent(englishEventName);
+    navigate(`/eventPick/${englishEventName}`, {state: englishEventName});
+  };
+
+  const eventNamesMap = {
+    'Siatkówka': 'VOLLEYBALL',
+    'Piłka ręczna': 'HANDBALL',
+    'Piłka nożna': 'FOOTBALL',
+    'Tenis ziemny': 'TENNIS',
+    'Maraton': 'MARATHON',
+    'Biegi': 'RUNNING',
   };
 
   const sportEventTypes = [
