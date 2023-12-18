@@ -1,16 +1,22 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import SportEventTypePicker from "../components/SportEventTypePicker";
 import "../styles/SportEventType.css";
 import { useNavigate } from "react-router-dom";
 
 const SportEventTypePage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate('/signin');
+    }
+  }, []);
 
   const handleEventPick = (eventTypeName) => {
     const englishEventName = eventNamesMap[eventTypeName];
     setSelectedEvent(englishEventName);
-    navigate(`/eventPick/${englishEventName}`, {state: englishEventName});
+    navigate(`/eventPicked/${englishEventName}`, { state: { englishEventName } });
   };
 
   const eventNamesMap = {

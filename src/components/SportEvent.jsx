@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../styles/SportEvent.css"
 import axios from "axios";
 import { useNavigate, useParams } from "react-router";
-import { format } from 'date-fns';
 import { useLocation } from "react-router";
 
 const SportEvent = () => {
@@ -13,20 +12,9 @@ const SportEvent = () => {
   const [maxParticipants, setMaxParticipants] = useState(0)
   const [eventType, setEventType] = useState('')
   const navigate = useNavigate()
-  const location = useLocation();
-  const sportEventAddress = location.state?.sportEventAddress;
-
-  const handleEventTimeChange = (e) => {
-    const enteredDate = e.target.value;
-    const formattedDate = format(new Date(enteredDate), 'yyyy-MM-dd HH:mm');
-    setEventTime(formattedDate);
-  };
-
-  const handleRegistrationDeadlineChange = (e) => {
-    const enteredDate = e.target.value;
-    const formattedDate = format(new Date(enteredDate), 'yyyy-MM-dd HH:mm');
-    setRegistrationDeadline(formattedDate);
-  }
+  const location = useLocation()
+  const sportEventAddress = location.state?.eventAddressId;
+  const token = localStorage.getItem("token")
 
   const handleCreateSportEvent = (event) => {
     event.preventDefault()
@@ -35,6 +23,7 @@ const SportEvent = () => {
       url: 'http://localhost:8080/api/sportEvent/create',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
       data: {
         eventName: eventName,
@@ -42,7 +31,7 @@ const SportEvent = () => {
         registrationDeadline: registrationDeadline,
         description: description,
         maxParticipants: maxParticipants,
-        eventType: eventType,
+        sportEventType: eventType,
         sportEventAddress: sportEventAddress
       }
     }).then((response) => {
@@ -74,11 +63,11 @@ const SportEvent = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="eventTimeInput" className="form-label">Rozpoczęcie wydarzenia</label>
-          <input type="text" className="form-control" id="eventTimeInput" onChange={handleEventTimeChange}/>
+          <input type="text" className="form-control" id="eventTimeInput" onChange={(e) => setEventTime(e.target.value)}/>
         </div>
         <div className="mb-3">
           <label htmlFor="registrationDeadlineInput" className="form-label">Godzina, do której można zgłaszać udział</label>
-          <input type="text" className="form-control" id="registrationDeadlineInput" onChange={handleRegistrationDeadlineChange}/>
+          <input type="text" className="form-control" id="registrationDeadlineInput" onChange={(e) => setRegistrationDeadline(e.target.value)}/>
         </div>
         <div class="form-floating">
           <textarea class="form-control" id="floatingTextarea" style={{
