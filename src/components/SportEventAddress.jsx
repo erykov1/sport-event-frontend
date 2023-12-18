@@ -9,8 +9,8 @@ const SportEventAddress = () => {
   const [city, setCity] = useState('');
   const [street, setStreet] = useState('');
   const [streetNumber, setStreetNumber] = useState('');
-  const [sportEventAddress, setSportEventAddress] = useState(0)
   const navigate = useNavigate()
+  const token = localStorage.getItem("token")
 
   const handleCreateSportEventAddress = (event) => {
     event.preventDefault()
@@ -19,6 +19,7 @@ const SportEventAddress = () => {
       url: 'http://localhost:8080/api/sportEvent/address/create',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
       data: {
         postalCode: postalCode,
@@ -27,8 +28,8 @@ const SportEventAddress = () => {
         streetNumber: streetNumber
       }
     }).then((response) => {
-      setSportEventAddress(response.data.sportEventId)
-      navigate('/event', { state: { sportEventAddress } })
+      const eventAddressId = response.data.eventAddressId;
+      navigate('/event', { state: { eventAddressId } })
     }).catch((error) =>{
       console.log(error)
     })

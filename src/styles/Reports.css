@@ -1,0 +1,34 @@
+.reports-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.report-form-container {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.report-form-container p {
+  margin: 0;
+}
+
+.action-buttons-container {
+  margin-top: 16px;
+}
+
+.btn {
+  margin-right: 8px;
+}
+
+.btn-accept {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-reject {
+  background-color: #f44336;
+  color: white;
+}

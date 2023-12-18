@@ -24,6 +24,9 @@ const Navbar = () => {
         <li>
           <Link to="/reports">Zgłoszenia</Link>
         </li>
+        <li>
+          <Link to="/" onClick={() => localStorage.removeItem("token")}>Wyloguj się</Link>
+        </li>
       </ul>
     </nav>
   );
