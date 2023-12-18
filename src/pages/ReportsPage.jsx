@@ -2,15 +2,28 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import "../styles/Reports.css"
 import ReportForm from "../components/ReportForm";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const ReportsPage = () => {
   const [reports, setReports] = useState([]);
   const token = localStorage.getItem("token");
   const [filteredReports, setFilteredReports] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getAllReports();
-  }, []);
+    if (!token) {
+      navigate('/signin');
+    } else {
+      const decodedToken = jwtDecode(token);
+      const userRole = decodedToken ? decodedToken.role : null;
+      if (userRole !== 'ADMIN') {
+        navigate('/');
+      } else {
+        getAllReports();
+      }
+    }
+  }, [token, navigate]);
 
   const getAllReports = () => {
     axios({

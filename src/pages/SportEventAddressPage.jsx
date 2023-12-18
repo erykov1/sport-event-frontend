@@ -3,12 +3,16 @@ import React from "react";
 import SportEventAddress from "../components/SportEventAddress";
 import '../styles/SportEventAddress.css';
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const SportEventAddressPage = () => {
   const navigate = useNavigate()
+  const token = localStorage.getItem("token")
+  const decodedToken = jwtDecode(token)
+  const userRole = decodedToken ? decodedToken.role : null
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
+    if (userRole !== 'ADMIN') {
       navigate('/signin');
     }
   }, [navigate]);

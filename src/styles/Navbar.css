@@ -1,7 +1,5 @@
-/* Navbar.css */
-
 .navbar {
-  background: linear-gradient(to bottom, #ff7251, #ffb366 70%, #ffffff); /* Czerwień przechodząca w pomarańcz do białego gradientu */
+  background: linear-gradient(to bottom, #ff7251, #ffb366 70%, #ffffff);
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -17,8 +15,13 @@ li {
   margin-right: 20px;
 }
 
-a {
+.navbar a {
   text-decoration: none;
-  color: #333; /* Kolor tekstu */
+  color: #333; 
   font-weight: bold;
+  border-bottom: none;
+}
+
+.navbar a:hover {
+  color: #555;
 }
