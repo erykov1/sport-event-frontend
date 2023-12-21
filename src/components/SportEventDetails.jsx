@@ -5,12 +5,12 @@ const SportEventDetails = ({sportEventId, sportEventName, eventTime, registratio
   
   return (
     <div className="sport-event-details-container">
-      <h2>Sport Event Details</h2>
-      <p><strong>Event Name:</strong> {sportEventName}</p>
-      <p><strong>Event Time:</strong> {eventTime}</p>
-      <p><strong>Registration Deadline:</strong> {registrationDeadline}</p>
-      <p><strong>Description:</strong> {description}</p>
-      <p><strong>Max Participants:</strong> {maxParticipants}</p>
+      <h2>Szczegóły wydarzenia</h2>
+      <p><strong>Nazwa:</strong> {sportEventName}</p>
+      <p><strong>Czas wydarzenia:</strong> {new Date(eventTime).toLocaleString()}</p>
+      <p><strong>Do kiedy można zgłosić chęć uczestnictwa:</strong> {new Date(registrationDeadline).toLocaleString()}</p>
+      <p><strong>Opis:</strong> {description}</p>
+      <p><strong>Maksymalna liczba chętnych:</strong> {maxParticipants}</p>
     </div>
   );
 }

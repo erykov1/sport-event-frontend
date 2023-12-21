@@ -5,11 +5,11 @@ const SportEventAddressDetails = ({eventAddressId, postalCode, city, street, str
 
   return (
     <div className="sport-event-address-details-container">
-      <h2>Event Address Details</h2>
-      <p><strong>Postal Code:</strong> {postalCode}</p>
-      <p><strong>City:</strong> {city}</p>
-      <p><strong>Street:</strong> {street}</p>
-      <p><strong>Street Number:</strong> {streetNumber}</p>
+      <h2>Szczegóły adresu wydarzenia</h2>
+      <p><strong>Kod pocztowy:</strong> {postalCode}</p>
+      <p><strong>Miejscowość:</strong> {city}</p>
+      <p><strong>Ulica:</strong> {street}</p>
+      <p><strong>Numer ulicy:</strong> {streetNumber}</p>
     </div>
   );
 }

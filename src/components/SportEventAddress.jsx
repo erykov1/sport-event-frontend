@@ -9,11 +9,19 @@ const SportEventAddress = () => {
   const [city, setCity] = useState('');
   const [street, setStreet] = useState('');
   const [streetNumber, setStreetNumber] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate()
   const token = localStorage.getItem("token")
 
   const handleCreateSportEventAddress = (event) => {
-    event.preventDefault()
+    event.preventDefault();
+
+    if (!postalCode || !city || !street || !streetNumber) {
+      setError('Wypełnij wszystkie pola');
+      return;
+    }
+    setError('');
+
     axios({
       method: 'post',
       url: 'http://localhost:8080/api/sportEvent/address/create',
@@ -54,6 +62,7 @@ const SportEventAddress = () => {
           <label htmlFor="streetNumberInput" className="form-label">Numer ulicy</label>
           <input type="text" className="form-control" id="streetNumberInput" onChange={(e) => setStreetNumber(e.target.value)}/>
         </div>
+        {error && <div className="error-message">{error}</div>}
         <button type="submit" className="btn btn-primary" onClick={handleCreateSportEventAddress}>Potwierdź adres</button>
       </form>
     </div>

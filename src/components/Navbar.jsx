@@ -1,12 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import '../styles/Navbar.css'
 import { jwtDecode } from "jwt-decode";
 
 const Navbar = () => {
+  const [role, setRole] = useState("")
   const token = localStorage.getItem("token")
-  const decodedToken = token ? jwtDecode(token) : null;
-  const userRole = decodedToken ? decodedToken.role : null;
+  let decodedToken = token ? jwtDecode(token) : null;
+  let userRole = decodedToken ? decodedToken.role : null;
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setRole(decodedToken.role);
+    }
+  }, [token]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate('/');
+  };
 
   return (
     <nav className="navbar">
@@ -38,7 +52,7 @@ const Navbar = () => {
               <Link to="/reports">Zgłoszenia</Link>
             </li>
             <li>
-              <Link to="/" onClick={() => localStorage.removeItem("token")}>Wyloguj się</Link>
+              <Link to="/" onClick={handleLogout}>Wyloguj się</Link>
             </li>
           </>
         )}
