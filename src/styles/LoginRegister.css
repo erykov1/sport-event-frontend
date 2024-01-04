@@ -11,15 +11,14 @@
 }
 
 .login-register-form-container {
-  background-color: rgba(255, 255, 255, 0.8); /* Kolor tła formularza z przezroczystością */
-  padding: 20px; /* Dodatkowy padding dla estetyki */
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 20px; 
   width: 60%;
-  max-width: 500px; /* Maksymalna szerokość formularza */
-  border-radius: 10px; /* Zaokrąglenie rogów formularza */
-  border: 2px solid black; /* Czarna obwódka formularza */
+  max-width: 500px; 
+  border-radius: 10px; 
+  border: 2px solid black;
 }
 
-/* Dodatkowy styl dla formularza */
 form {
-  width: 100%; /* Formularz zajmie 100% szerokości kontenera */
+  width: 100%;
 }

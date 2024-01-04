@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import "../styles/SportEventType.css";
 
 const SportEventTypePicker = ({ eventTypeName, eventPhotoLink, onEventPick }) => {

@@ -1,6 +1,5 @@
 import './App.css';
-import { Router, Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import RegisterPage from "./pages/RegisterPage"
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';

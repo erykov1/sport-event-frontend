@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/SportEvent.css"
 import axios from "axios";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate} from "react-router";
 import { useLocation } from "react-router";
 
 const SportEvent = () => {

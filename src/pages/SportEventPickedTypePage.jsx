@@ -7,8 +7,6 @@ import { useLocation } from "react-router";
 
 const SportEventPickedTypePage = () => {
   const [sportEvents, setSportEvents] = useState([]);
-  const [selectedEventId, setSelectedEventId] = useState(null);
-  const [sportEventAddress, setSportEventAddress] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const token = localStorage.getItem("token");
@@ -22,10 +20,6 @@ const SportEventPickedTypePage = () => {
   }, []);
 
   const handleEventClick = (eventId, eventAddress) => {
-    setSelectedEventId(eventId);
-    setSportEventAddress(eventAddress);
-    console.log("wybrane id", selectedEventId);
-    console.log("wybrany adres", sportEventAddress);
     navigate(`/event/details/${eventId}`, { state: { selectedEventId: eventId, sportEventAddress: eventAddress } });
   };
 
@@ -53,7 +47,7 @@ const SportEventPickedTypePage = () => {
             key={event.sportEventId}
             sportEventId={event.sportEventId}
             eventName={event.eventName}
-            eventTime={event.eventTime}
+            eventTime={new Date(event.eventTime).toLocaleDateString()}
             onEventClick={() => handleEventClick(event.sportEventId, event.sportEventAddress)}
             sportEventAddress={event.sportEventAddress}
           />
