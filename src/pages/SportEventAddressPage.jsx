@@ -8,8 +8,8 @@ import { jwtDecode } from "jwt-decode";
 const SportEventAddressPage = () => {
   const navigate = useNavigate()
   const token = localStorage.getItem("token")
-  const decodedToken = jwtDecode(token)
-  const userRole = decodedToken ? decodedToken.role : null
+  const decodedToken = token ? jwtDecode(token) : null;
+  const userRole = decodedToken ? decodedToken.role : null;
 
   useEffect(() => {
     if (userRole !== 'ADMIN') {

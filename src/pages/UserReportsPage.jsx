@@ -3,19 +3,24 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import UserReportForm from "../components/UserReportForm";
 import "../styles/UserReport.css"
+import { useNavigate } from "react-router-dom";
 
 const UserReportsPage = () => {
   const [userReports, setUserReports] = useState([])
   const [filteredReports, setFilteredReports] = useState([]);
+  const token = localStorage.getItem('token');
+  const decodedToken = token ? jwtDecode(token) : null;
+  const navigate = useNavigate()
 
   useEffect(() => {
+    if (!token) {
+      navigate("/signin")
+    }
     getAllUserReports()
   }, [])
 
   const getAllUserReports = () => {
-    const token = localStorage.getItem('token');
-    const decodedToken = jwtDecode(token);
-    const username = decodedToken.sub;
+    const username = token ? decodedToken.sub : null;
     axios({
       method: "get",
       url: `http://localhost:8080/api/report/all/${username}`,

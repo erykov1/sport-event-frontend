@@ -7,7 +7,7 @@ import { jwtDecode } from "jwt-decode";
 const SportEventPage = () => {
   const navigate = useNavigate()
   const token = localStorage.getItem("token")
-  const decodedToken = jwtDecode(token)
+  const decodedToken = token ? jwtDecode(token) : null;
   const userRole = decodedToken ? decodedToken.role : null
 
   useEffect(() => {

@@ -8,7 +8,7 @@ const ReportPage = () => {
   const [role, setRole] = useState("")
   const navigate = useNavigate()
   const token = localStorage.getItem("token");
-  const decodedToken = jwtDecode(token);
+  const decodedToken = token ? jwtDecode(token) : null;
 
   useEffect(() => {
     if (!token || !decodedToken) {
